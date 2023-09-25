@@ -1,0 +1,15 @@
+const Oufit = require("../models/oufit")
+
+const oufitService = {
+    getAll: async function (limit,offset) {
+        return await Oufit.find().limit(limit).skip(offset);
+    },
+    getById: async function (name) {
+        return await Oufit.findOne(name);
+    },
+    getByCategory: async function (limit,offset,category) {
+        return await Oufit.find({category:category}.limit(limit).skip(offset));
+    }
+}
+
+module.exports = oufitService;

@@ -4,11 +4,11 @@ const oufitService = {
     getAll: async function (limit,offset) {
         return await Oufit.find().limit(limit).skip(offset);
     },
-    getById: async function (name) {
-        return await Oufit.findOne(name);
+    getById: async function (id) {
+        return await Oufit.findById(id);
     },
     getByCategory: async function (limit,offset,category) {
-        return await Oufit.find({category:category}.limit(limit).skip(offset));
+        return await Oufit.find({category:category}).limit(limit).skip(offset);
     }
 }
 

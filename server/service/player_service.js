@@ -15,8 +15,8 @@ const playerService = {
         return await Player.find().limit(limit).skip(offset);
 
     },
-    getById: async function (name) {
-        return await Player.findOne({ name });
+    getById: async function (_id) {
+        return await Player.findById(_id);
     },
     getCountDocuments: async function (){
         const result = await Player.estimatedDocumentCount({});

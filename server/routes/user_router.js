@@ -11,6 +11,7 @@ userRouter.get("/usuarios",middelWare.verify,userController.getAll);
 
 userRouter.post("/:name/:pin",userController.store);
 
-userRouter.get("/usuarios/:name/:pin",middelWare.verify,userController.getById);
+userRouter.get("/usuarios/buscar",middelWare.verify,userController.getById);
+
 
 module.exports = userRouter;

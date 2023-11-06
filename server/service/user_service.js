@@ -5,7 +5,10 @@ const userService = {
     getAll: async function (limit, offset) {
         return await User.find().limit(limit).skip(offset);
     },
-    getById: async function (name, pin) {
+    getById: async function (id) {
+        return await User.findById(id);
+    },
+    getOne: async function (name, pin) {
         return await User.findOne({ name, pin });
     },
     create: async function (user) {

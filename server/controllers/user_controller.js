@@ -17,6 +17,11 @@ const userController = {
     },
     // Obtiene un usuario en particular
     getById: async function (req, res) {
+        const id = req.auth._id;
+        const user = await userService.getById(id);
+        res.json(user);
+    },
+    getOne: async function (req, res) {
         const name = req.params.name;
         const pin = req.params.pin;
         const cryptoPass = require('crypto')
@@ -36,7 +41,7 @@ const userController = {
             .update(pin)
             .digest('hex');
 
-        let existUser = await userService.getById(name, cryptoPass);
+        let existUser = await userService.getOne(name, cryptoPass);
         if (!existUser) {
 
             const newUser = new User(
@@ -100,5 +105,18 @@ const userController = {
         }  
     }
 }
+
+/*
+getById: async function (req, res) {
+        const name = req.params.name;
+        const pin = req.params.pin;
+        const cryptoPass = require('crypto')
+            .createHash('sha256')
+            .update(pin)
+            .digest('hex');
+        const user = await userService.getById(name, cryptoPass);
+        res.json(user);
+    },
+*/
 
 module.exports = userController;

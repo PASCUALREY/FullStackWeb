@@ -5,6 +5,7 @@ const middleWare = require("../middleware/auth-middleware");
 
 
 oufitRouter.get("/",middleWare.verify,oufitController.getAll);
-oufitRouter.get("/:category",middleWare.verify,oufitController.getByCategory);
+oufitRouter.get("/buscar/:category",middleWare.verify,oufitController.getByCategory);
+oufitRouter.get("/:id",oufitController.getByID);
 
 module.exports = oufitRouter;

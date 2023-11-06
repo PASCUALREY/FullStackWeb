@@ -17,9 +17,14 @@ const playerController = {
     },
     // Obtiene un jugador en particular
     getById: async function (req, res) {
-        const name = req.params.name;
-        const player = await playerService.getById(name);
-        res.json(player);
+        const id = req.params.id;
+        try {
+            const result = await playerService.getById(id);
+            res.status(200).json(result);
+        } catch (error) {
+            console.log(error);
+            res.status(500).send("Error. Intente más tarde.")
+        }
     },
     // Obtiene los ultimos 5 jugadores creados
     getLast: async function (req, res) {

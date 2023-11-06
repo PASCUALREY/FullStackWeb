@@ -26,6 +26,16 @@ const oufitController = {
             res.status(500).send("Error. Intente más tarde.")
         }
     },
+    getByID: async function (req, res) {
+        const id = req.params.id;
+        try {
+            const result = await oufitService.getById(id);
+            res.status(200).json(result);
+        } catch (error) {
+            console.log(error);
+            res.status(500).send("Error. Intente más tarde.")
+        }
+    }
 }
 
 module.exports = oufitController;

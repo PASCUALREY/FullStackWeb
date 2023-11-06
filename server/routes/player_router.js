@@ -5,7 +5,7 @@ const middleWare = require("../middleware/auth-middleware");
 
 
 playerRouter.get("/",middleWare.verify,playerController.getAll);
-playerRouter.get("/:name",middleWare.verify,playerController.getById);
+playerRouter.get("/:id",middleWare.verify,playerController.getById);
 playerRouter.post("/vestir",middleWare.verify,playerController.store);
 
 module.exports = playerRouter;

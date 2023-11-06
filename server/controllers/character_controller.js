@@ -13,6 +13,16 @@ const characterController = {
             res.status(500).send("Error. Intente más tarde.")
         }
     },
+    getByID: async function (req, res) {
+        const id = req.params.id;
+        try {
+            const result = await characterService.getById(id);
+            res.status(200).json(result);
+        } catch (error) {
+            console.log(error);
+            res.status(500).send("Error. Intente más tarde.")
+        }
+    },
     // Guarda una nueva plantilla
     store: async function (req,res){
         const faceImg = req.body.faceImg;
